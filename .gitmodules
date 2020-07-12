@@ -1,0 +1,4 @@
+[submodule "os_kernel_lab"]
+	path = os_kernel_lab
+	url = https://github.com/osstudyroom/os_kernel_lab.git
+	branch = master
