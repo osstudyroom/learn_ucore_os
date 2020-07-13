@@ -1,0 +1,20 @@
+#!/bin/sh
+
+start() {
+    docker-compose run --service-ports --rm --name "ucore_os_$1" $1
+}
+
+debug() {
+    docker exec -it "ucore_os_$1" bash -c "sleep 1; gdb -tui -x ./tools/gdbinit"
+}
+
+exec() {
+    docker exec -it "ucore_os_$1" ${@:2}
+}
+
+case $1 in
+    start) start $2;;
+    debug) debug $2;;
+    exec) exec $@;;
+    *) echo "Invalid command"; return 1;;
+esac

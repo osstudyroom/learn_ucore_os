@@ -8,26 +8,17 @@
 
 You can start a qemu instance in an interactive mode inside an ubuntu:14.04 container for lab1 by:
 ```shell
-docker-compose run --service-ports --rm lab1
+./run start lab1
 ```
-
-Also, it can specify a container name for debug by `--name`, otherwise you need find the container id via `docker-compose ps -a`
 
 ## How to debug
 
 #### Option 1
 
-##### Steps
-
-1. Enter the qemu instance container via an interactive mode bash
-    ```shell
-    docker exec -it <container_id/container_name> bash
-    ```
-1. Run `gdb` in text ui mode with init config inside the container.
-    ```bash
-    gdb -tui -x ./tools/gdbinit
-    ```
-1. Press enter to continue
+Using gdb inside the container:
+```shell
+./run debug lab1
+```
 
 #### Option 2
 
